@@ -17,9 +17,7 @@ execute "Extracting and Building #{basename} from Source" do
   command <<-COMMAND
     tar xfz #{tarball_filename}
     cd #{basename}
-    ./configrue  --enable-multibyte --enable-locale --with-tcsetpgrp
-    make
-    make install
+    ./configure  --enable-multibyte --enable-locale --with-tcsetpgrp && make && make install
   COMMAND
   creates "#{node['zsh']['prefix']}/bin/zsh"
   not_if "zsh --version | grep #{node['zsh']['version']}"
