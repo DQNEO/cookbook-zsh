@@ -22,3 +22,8 @@ execute "Extracting and Building #{basename} from Source" do
   creates "#{node['zsh']['prefix']}/bin/zsh"
   not_if "zsh --version | grep #{node['zsh']['version']}"
 end
+
+link "/usr/local/bin/zsh" do
+  to "#{node['zsh']['prefix']}/bin/zsh"
+  not_if "test -e /usr/local/bin/zsh"
+end
