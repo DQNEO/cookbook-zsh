@@ -5,6 +5,10 @@ tarball_filename = basename + '.tar.gz'
 tarball_filepath = Chef::Config['file_cache_path'] + '/' + tarball_filename
 remote_filepath = node['zsh']['url'] + tarball_filename
 
+package "ncurses-devel" do
+  action :install
+end
+
 remote_file tarball_filepath do
   source remote_filepath
   mode      00644
