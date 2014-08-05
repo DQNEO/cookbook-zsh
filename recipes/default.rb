@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 # see http://dqn.sakusakutto.jp/2012/06/centos62zsh241install.html
+include_recipe 'build-essential'
+
 basename = "zsh-#{node['zsh']['version']}"
 tarball_filename = basename + '.tar.gz'
 tarball_filepath = Chef::Config['file_cache_path'] + '/' + tarball_filename
